@@ -1,0 +1,97 @@
+{{ block title }}
+    Roll the Dice
+    {% load otree static %}
+    <link rel="stylesheet" href="{% static 'global/css/style.css' %}"/>
+    <script type="module" src="{% static 'global/js/index.js' %}"></script>
+{{ endblock }}
+
+{{ block content }}
+
+<center>
+    
+<div id="app"></div>
+
+<br>
+
+<div>
+  <button id="rollBtn" onclick=rollDice() style="display: none;">Roll the Dice!</button>
+</div>
+</center>
+
+{{ next_button }}
+
+
+<script>
+
+var button = document.getElementById("rollBtn");
+    button.addEventListener("click", function(event) {
+        event.preventDefault();
+        // Your code to run when the button is clicked goes here
+    });
+    
+function rollDice() {
+  // Disable the button to prevent multiple clicks
+  document.getElementById("rollBtn").disabled = true;
+  // Change the text of the button to indicate that it has been clicked
+  // Change the text of the button to indicate that it has been clicked
+  document.getElementById("rollBtn").innerHTML = "You have rolled once";
+}
+
+
+// Function to show the button after 5 seconds
+function showButton() {
+button.style.display = "block";
+}
+
+// Call showButton() after a delay of 5 seconds
+setTimeout(showButton, 50);
+
+</script>
+
+<script type="text/javascript" src="{% static 'global/js/index.js' %} "></script>
+
+
+<script>
+    // Setup your threejs scene
+    var scene = new THREE.Scene();
+    // ...
+    
+    // Setup your cannonjs world
+    var world = new CANNON.World();
+    // ...
+    
+    DiceManager.setWorld(world);
+    
+    // Create a dice
+    var dice = new DiceD6({backColor: '#ff0000}); //DiceD6 for six-sided dice; for options see DiceObject
+    scene.add(dice.getObject());
+    
+    // If you want to place the mesh somewhere else, you have to update the body
+    dice.getObject().position.x = 150;
+    dice.getObject().position.y = 100;
+    dice.getObject().rotation.x = 20 * Math.PI / 180;
+    dice.updateBodyFromMesh();
+    
+    // Set the value of the side, which will be upside after the dice lands
+    DiceManager.prepareValues([{dice: dice, value: 6}]);
+    
+    //Animate everything
+    function animate() {
+        world.step(1.0 / 60.0);
+        
+        dice.updateMeshFromBody(); // Call this after updating the physics world for rearranging the mesh according to the body
+        
+        renderer.render(scene, camera);
+        
+        requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+    
+</script>
+
+
+
+
+
+{{ endblock }}
+
