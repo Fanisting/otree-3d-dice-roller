@@ -10,5 +10,10 @@ This app is a 3d dice roller, and the dice outcome is generated as variable "dic
 2. At roll_dice page, the 3d dice simulation would ensure the outcome is "dice_number";
 3. Finally, the Results page would present the "dice_number". 
 
-## Tips
-The js package for 3d-dice roller is [dice-box-threejs](https://github.com/3d-dice/dice-box-threejs). 
+## Customization
+
+The dice roller simulation is based on [dice-box-threejs](https://github.com/3d-dice/dice-box-threejs) and you can add more features according to the package. Now the dice roller would only produce one outcome of a six-sided dice. 
+
+And about the button at dice_roller page, the button is set to show up after 50ms for preparation of js web packages, and the button can only be clicked once.  
+
+
