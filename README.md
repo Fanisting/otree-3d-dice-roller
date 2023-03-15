@@ -1,5 +1,5 @@
 # otree-3d-dice-roller
-A 3d-dice-roller game for heavioral experiment using [o-Tree](http://www.otree.org/).
+A 3d-dice-roller game for beavioral experiment using [o-Tree](http://www.otree.org/).
 
 ## Introduction
 
